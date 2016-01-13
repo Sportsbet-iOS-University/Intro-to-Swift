@@ -91,6 +91,14 @@ of `a` is at compile-time, which means you must provide a type annotation.
 
 */
 
+/*:
+
+# Functions
+
+Given a simple function:
+
+*/
+
 func test(a: Int) -> Int {
     return a + 1
 }
@@ -107,7 +115,115 @@ the code is compiled. This function also *returns* a value of type `Int`, which
 is specified in the function by using the format `-> Type` after the parameter
 list (i.e after the closing parenthesis).
 
-"But what about the constants and variables we assigned above," you may ask,
+A more complex example:
+
+*/
+
+func doThing(onThis thing: Int, consideringThat otherThing: Int) {
+    
+}
+
+/*:
+
+![Complex function](2-2.png)
+
+This function returns nothing, so it simply omits the return type. This
+function specifies both *local* **and** *external* parameter names.
+
+### Parameter Names
+
+As above there are two kinds of parameters names, *external* parameter name
+and *local* parameter name. *Only* the *local* parameter name is mandatory,
+but you can specify a custom *external* parameter name if it will aid
+readability of your function at its call site. If you do not specify an
+external parameter name for the **first** parameter, it is omitted entirely
+at the call site!
+
+For example, here's a simple kind of function:
+
+*/
+
+func simple(a: Int) {
+    _ = a + 1
+}
+
+/*:
+
+This specifies only a **local** parameter name for its first parameter. This
+parameter `a` can be accessed inside the function like any other constant by
+using its *local parameter name*.
+
+Since it doesn't specify an *external parameter name* for its first parameter,
+the parameter name can be omitted entirely at the call site:
+
+*/
+
+simple(1)
+
+/*:
+
+If you want to force the parameter name to be written at the call site, include
+an *external parameter name* in the first parameter:
+
+*/
+
+func jump(height height: Int) {
+    
+}
+
+jump(height: 1)
+
+/*:
+
+Notice how we were *forced* to include the `height:` when calling this
+function? This can be useful for writing self-documenting code.
+
+Things are different with the *second* parameter in a function. By default, you
+*must* write out the parameter name for the second parameter onwards, whether
+you specify an *external parameter name* or not:
+
+*/
+
+func jumpHeight(height: Int, times: Int) {
+    
+}
+
+jumpHeight(1, times: 2)
+
+/*:
+
+Notice how the parameter name `times:` is required at the call site, whether we
+declared an external parameter name or not? You could also write this function
+using *external parameter names* like:
+
+*/
+
+func jump(height height: Int, times: Int) {
+    
+}
+
+jump(height: 1, times: 2)
+
+/*:
+
+While this is possible, the `jumpHeight(height: Int, times: Int)` way is
+considered more *idiomatic*.
+
+If you absolutely do not want the parameter names to be written at the call
+site, you can mark them as such by declaring an *external parameter name* as an
+underscore:
+
+*/
+
+func add(a: Int, _ b: Int) -> Int {
+    return a + b
+}
+
+add(1, 2)
+
+/*:
+
+"What about the constants and variables we assigned above," you may ask,
 "Those don't have type annotations, why do they work?"
 
 */
@@ -116,7 +232,7 @@ list (i.e after the closing parenthesis).
 
 # Type Inference
 
-In JavaScript, you are allowed to declare a variable *wihout a type* and
+In JavaScript, you are allowed to declare a variable *without a type* and
 *without a default value*. That looks something like:
 
     var something;
@@ -198,59 +314,43 @@ var a, b, c: Int
 
 /*:
 
-# Numbers
+# Comments
 
-We've worked with numbers a little bit above. Swift has two fundamental number
-styles, *Integral* style numbers and *Floating-point* style numbers. For
-integrals you can generally use `Int` and for real numbers you can generally
-use `Float`.
+Swift uses C++ style comments.
 
-## Number Sizes
-
-Depending on how large a number you need, there are many options for which
-number type to use. For integrals:
-
-    Int8: -128 to 127
-    Int16: -32768 to 32767
-    Int32: -2,147,483,648 to 2,147,483,647
-    Int64: -9.223372037E18 to 9.223372037E18
-    UInt8: 0 to 255
-    UInt16: 0 to 65535
-    UInt32: 0 to 4,294,967,296
-    UInt64: 0 to 1.844674407E19
-
-For real numbers, there's `Float` and `Double`. If you need to represent really
-large numbers or really small numbers very precisely, use `Double`, otherwise
-use `Float`. Note that you should never use `Float` or `Double` for currency
-or transactional data!
-
-## Converting Numbers
-
-Sometimes something will want a `Float` when all you have is a `Int`. You can
-convert easily between numbers. For example, the function below expects a
-`Float`:
 */
-let num = 10
 
-func giveMeAFloat(number: Float) {
-    
-}
+// This comment runs to the end of the line.
 
-//giveMeAFloat(num)
-//^ Cannot convert value of type 'Int' to expected argument type 'Float'
+/*
+
+This block comment runs from the opening forward slash + asterisk, and runs 
+to the closing asterisk + forward slash.
+
+*/
 
 /*:
-If you try to `num` directly into `giveMeAFloat` you will get a compiler error:
-"Cannot convert value of type '`Int`' to expected argument type '`Float`'".
-Basically, the compiler is telling you that it was expecting a `Float` but you
-gave it an `Int`. If you convert it to a `Float` first, it works as expected:
+
+Comments which generate documentation look like:
+
 */
 
-let numAsFloat = Float(num)
-giveMeAFloat(numAsFloat)
+/// This is a documentation comment that runs to the end of the line.
 
-// Or, on a single line:
-giveMeAFloat(Float(num))
+/**
 
+This is a documentation comment that runs from the opening forward slash + 
+asterisk, and runs to the closing asterisk + forward slash.
+
+*/
+
+/*:
+
+Documentation comments use a subset of the Markdown (specifically, CommonMark)
+syntax. More documentation can be found on the Apple site:
+
+[Markup Overview](https://developer.apple.com/library/ios/documentation/Xcode/Reference/xcode_markup_formatting_ref)
+
+*/
 
 //: [Next Page: Simple Types](@next)
