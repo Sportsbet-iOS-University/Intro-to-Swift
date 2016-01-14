@@ -4,6 +4,7 @@
         <page name='Introduction'/>
         <page name='Basics'/>
         <page name='Simple Types'/>
+        <page name='Collection Types'/>
         <page name='Classes'/>
         <page name='Values'/>
         <page name='References'/>

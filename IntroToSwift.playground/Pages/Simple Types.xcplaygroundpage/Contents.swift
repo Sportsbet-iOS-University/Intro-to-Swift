@@ -504,4 +504,5 @@ let third = "spicy meat-a-ball!"
 // Write your code here
 
 
-//: [Next Page: Classes](@next)
+
+//: [Next Page: Collection Types](@next)
