@@ -459,7 +459,7 @@ in Apple's documentation for future reference:
 
 /*:
 
-## Strings Exercise
+## Strings Exercise 1
 
 Using *only* String Interpolation (i.e don't write any code outside of the
 String literal), write out:
@@ -487,5 +487,21 @@ func myString() -> String {
 
 let expectedString = "str1: 4\nstr2: 4\nstr3: 4"
 myString() == expectedString // This will be true when you've solved it!
+
+/*:
+
+## Strings Exercise 2
+
+Write *three* different ways you could glue these three Strings together
+into a single String:
+
+*/
+
+let first = "😘👌 Mamma mia!"
+let second = "That's a"
+let third = "spicy meat-a-ball!"
+
+// Write your code here
+
 
 //: [Next Page: Classes](@next)
