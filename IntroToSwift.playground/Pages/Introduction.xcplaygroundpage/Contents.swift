@@ -64,9 +64,9 @@ Sometimes you will see a commented out line of code like the below:
 
 /*:
 
-To toggle that line on and off, just press ⌘+/ (i.e the Command Key and the
+To toggle that line on and off, just press **`⌘/`** (i.e the Command Key and the
 Forward Slash key) while that line is selected. This technique is used
-throughout the playground to demonstrate code that should might not work.
+throughout the playground to demonstrate code that might not work.
 
 */
 

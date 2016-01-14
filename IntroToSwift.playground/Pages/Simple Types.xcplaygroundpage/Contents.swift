@@ -306,4 +306,186 @@ let (slices, remainder) = cakeSlicesPerPerson(17, slices: 32)
 let slicesCorrect = slices == 1
 let remainderCorrect = remainder == 15
 
+/*:
+
+# Strings
+
+Like most things in Swift, `String` is very powerful but also very complicated.
+We've already seen `String`s in action, but here's a quick refresher:
+
+*/
+
+let emptyString = ""
+emptyString.isEmpty // Note: true -->
+
+/*:
+
+`String`s declared with `var` are mutable and you can append to them:
+
+*/
+
+var stringBuilder = ""
+stringBuilder.appendContentsOf("test")
+stringBuilder += " plus this"
+
+/*:
+
+You can include values from constants, variables, literals or expressions in a
+`String` by writing them inside a pair of \() characters, like so:
+
+*/
+
+let multiplier = 3
+let message = "\(multiplier) times 2.5 is \(Double(multiplier) * 2.5)"
+
+/*:
+
+## String Escapes
+
+String literals can include the following special characters:
+
+- The escaped special characters \0 (null character), \\ (backslash), \t
+(horizontal tab), \n (line feed), \r (carriage return), \" (double quote) and
+\' (single quote)
+- An arbitrary Unicode scalar, written as \u{n}, where n is a 1–8 digit
+hexadecimal number with a value equal to a valid Unicode code point
+
+The code below shows four examples of these special characters. The wiseWords
+constant contains two escaped double quote characters. The dollarSign,
+blackHeart, and sparklingHeart constants demonstrate the Unicode scalar format:
+
+*/
+
+let wiseWords = "\"Imagination is more important than knowledge\" - Einstein"
+let dollarSign = "\u{24}"        // $,  Unicode scalar U+0024
+let blackHeart = "\u{2665}"      // ♥,  Unicode scalar U+2665
+let sparklingHeart = "\u{1F496}" // 💖, Unicode scalar U+1F496
+
+/*:
+
+## Unicode
+
+Swift `String`s are *always* Unicode-compliant and you cannot opt-out of this.
+Internally, they are represented in UTF-16 coding. Simple operations such as
+"get the fourth character" are complicated because the definition of "the
+fourth character" is ambiguous in Unicode.
+
+For example, consider the following `String`:
+
+    "Koala 🐨"
+
+What is the "length" of this String? Intuition says that it's 7, since there
+are 7 characters in the String.
+
+Look at what JavaScript does:
+
+    > var str = "Koala 🐨"
+    > str.length
+    8
+
+JavaScript naïvely counts the number of UTF-16 code points in the String, and
+since the 🐨 emoji contains *two* UTF-16 codepoints (0xD83D followed by 0xDC28)
+it incorrectly gets to the answer 8. In Swift, if you want to get the "count"
+of a String, you have to explicitly tell it what you think that means.
+
+If you're like JavaScript and you think that means UTF-16 codepoints:
+
+*/
+
+"Koala 🐨".utf16.count // Note: 8 -->
+
+/*:
+
+If you're a normal person and you think "the number of characters or glyphs":
+
+*/
+
+"Koala 🐨".characters.count // Note: 7 -->
+
+/*:
+
+If you only speak C, you can even get a C-friendly UTF-8 version of the String:
+
+*/
+
+"Koala 🐨".utf8.count // Note: 10 -->
+
+/*:
+
+## String Equality
+
+String and Character equality can be checked using the standard `==` and `!=`
+operators:
+
+*/
+
+let beatlesQuote = "I am the walrus, goo goo g'joob"
+let absolutelyTimeless = "I am the walrus, goo goo g'joob"
+
+beatlesQuote == absolutelyTimeless // Note: true -->
+
+/*:
+
+Swift does not have an `equals` method; unlike in JavaScript, PHP, Java, and
+C#, the regular `==` is not useless. Remember that Swift `String`s are always
+completely Unicode-aware: two `String` values (or two `Character` values) are
+considered equal if they are *canonically equivalent*. This means they're equal
+if they have the same *linguistic meaning and appearance*, even if they are 
+composed from different Unicode scalars behind the scenes.
+
+For example, in Unicode you could construct the character é one of two ways:
+- Using the `LATIN SMALL LETTER E WITH ACUTE` codepoint (U+00E9)
+- Using `LATIN SMALL LETTER E` (U+0065) followed by the `COMBINING ACUTE 
+ACCENT`
+(U+0301).
+
+Both of these render out to the screen as an é:
+
+*/
+
+let eAcute = "caf\u{E9}" // Note the String in the gutter -->
+let combinedAcute = "caf\u{65}\u{301}" // Note the String in the gutter -->
+
+eAcute == combinedAcute // Note: true -->
+
+/*:
+
+Swift Strings are complicated and nuanced so I recommend bookmarking the page
+in Apple's documentation for future reference:
+
+[Strings and Characters](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/StringsAndCharacters.html)
+
+*/
+
+/*:
+
+## Strings Exercise
+
+Using *only* String Interpolation (i.e don't write any code outside of the
+String literal), write out:
+
+- `str1`'s length as UTF-8 codepoints
+- `str2`'s length as Characters
+- `str3`'s length as UTF-16 codepoints
+
+Printing your output String should result in:
+
+    str1: 4
+    str2: 4
+    str3: 4
+
+*/
+
+let str1 = "1234"
+let str2 = "café"
+let str3 = "💩🌪"
+
+func myString() -> String {
+    // Write your code inside the String below using String Interpolation
+    return ""
+}
+
+let expectedString = "str1: 4\nstr2: 4\nstr3: 4"
+myString() == expectedString // This will be true when you've solved it!
+
 //: [Next Page: Classes](@next)
