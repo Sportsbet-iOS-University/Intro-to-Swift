@@ -223,6 +223,79 @@ add(1, 2)
 
 /*:
 
+## Functions Exercises
+
+In the space below, write a function that meets these criteria:
+
+- Is named testFunction
+- Has no parameters
+- Returns nothing
+
+*/
+// Write your answer here
+
+
+
+/*:
+
+In the space below, write a function that meets these criteria:
+
+- Is named mySecondFunction
+- Has one parameter:
+  - No external parameter name
+  - Local parameter name: value
+  - Type: Int
+- Returns nothing
+
+*/
+// Write your answer here
+
+
+
+/*:
+
+In the space below, write a function that meets these criteria:
+
+- Is named unlabeled
+- Has two parameters:
+  - Parameter 1
+    - No external parameter name
+    - Local parameter name: value1
+    - Type: Int
+  - Parameter 2
+    - No external parameter name
+    - Inhibits parameter name being written at call site
+    - Local parameter name: value2
+    - Type: Int
+- Returns Int
+
+*/
+// Write your answer here
+
+
+
+/*:
+
+In the space below, write a function that meets these criteria:
+
+- Is named frobnicate
+- Has two parameters:
+  - Parameter 1:
+    - External parameter name: givenFoo
+    - Local parameter name: foo
+    - Type: String
+  - Parameter 2:
+    - External parameter name: withBar
+    - Local parameter name: bar
+    - Type: String
+- Returns: String
+*/
+// Write your answer here
+
+
+
+/*:
+
 "What about the constants and variables we assigned above," you may ask,
 "Those don't have type annotations, why do they work?"
 

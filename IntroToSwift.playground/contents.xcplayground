@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<playground version='6.0' target-platform='ios' display-mode='rendered'>
+<playground version='6.0' target-platform='ios' display-mode='raw'>
     <pages>
         <page name='Introduction'/>
         <page name='Basics'/>
         <page name='Simple Types'/>
         <page name='Collection Types'/>
-        <page name='Classes'/>
         <page name='Values'/>
+        <page name='Classes'/>
         <page name='References'/>
         <page name='Optionals'/>
         <page name='Initialization'/>
