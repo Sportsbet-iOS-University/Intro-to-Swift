@@ -216,4 +216,85 @@ func arrayFromTuple(tuple: (Int, Int, Int)) -> [Int] {
 
 arrayFromTuple((5,10,15)) == [5,10,15,30,10] // This is true when solved!
 
+/*:
+
+# Dictionaries
+
+A dictionary stores associations between keys of the same type and values of
+the same type in a collection with no defined ordering. Each value is 
+associated with a unique key, which acts as an identifier for that value within
+the dictionary. Unlike items in an array, items in a dictionary do not have a 
+specified order. You use a dictionary when you need to look up values based on 
+their identifier, in much the same way that a real-world dictionary is used to 
+look up the definition for a particular word.
+
+Swift has a special shorthand syntax for defining Dictionary types:
+
+*/
+
+let dictOfStringsToStrings: [String : String] = [String : String]()
+
+/*:
+
+Or you can use Type Inference to shorten this to:
+
+*/
+
+let dictOfStringsToStrings2 = [String : String]()
+
+/*:
+
+The type to the left of the `:` is the _key_ type, and the type to the right of
+the `:` is the _value_ type. The _key_ is something you use to lookup a _value_
+in the dictionary. For example:
+
+*/
+
+let memes = [
+    "rekt": "A slang version of the word 'wrecked'",
+    "kek": "Like 'lol', but more edgy",
+    "lel": "Like 'kek', but more edgy"
+]
+
+/*:
+
+I can now retrieve a value from this dictionary by looking it up using its key:
+
+*/
+
+let rektMeaning = memes["rekt"]
+
+/*:
+
+You can iterate over a Dictionary the same way you do for Arrays. However, this
+time notice how the order is _not_ the same as the order they were added?
+
+*/
+
+var memesAndMeanings = ""
+for (meme, meaning) in memes {
+    memesAndMeanings.appendContentsOf("\(meme): \(meaning)\n")
+}
+memesAndMeanings
+
+/*:
+
+Unlike Array, you cannot derive a Dictionary from other Dictionaries, you must
+use a mutable one:
+
+*/
+
+var moreMemes = memes
+moreMemes["maymay"] = "An phonetic mispronunciation of meme"
+
+moreMemes
+
+/*:
+
+# Sets
+
+*/
+
+
+
 //: [Next: Classes](@next)
