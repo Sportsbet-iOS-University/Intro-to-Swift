@@ -316,7 +316,7 @@ We've already seen `String`s in action, but here's a quick refresher:
 */
 
 let emptyString = ""
-emptyString.isEmpty // Note: true -->
+emptyString.isEmpty
 
 /*:
 
@@ -392,7 +392,7 @@ If you're like JavaScript and you think that means UTF-16 codepoints:
 
 */
 
-"Koala 🐨".utf16.count // Note: 8 -->
+"Koala 🐨".utf16.count
 
 /*:
 
@@ -400,7 +400,7 @@ If you're a normal person and you think "the number of characters or glyphs":
 
 */
 
-"Koala 🐨".characters.count // Note: 7 -->
+"Koala 🐨".characters.count
 
 /*:
 
@@ -408,7 +408,7 @@ If you only speak C, you can even get a C-friendly UTF-8 version of the String:
 
 */
 
-"Koala 🐨".utf8.count // Note: 10 -->
+"Koala 🐨".utf8.count
 
 /*:
 
@@ -422,7 +422,7 @@ operators:
 let beatlesQuote = "I am the walrus, goo goo g'joob"
 let absolutelyTimeless = "I am the walrus, goo goo g'joob"
 
-beatlesQuote == absolutelyTimeless // Note: true -->
+beatlesQuote == absolutelyTimeless
 
 /*:
 
@@ -443,10 +443,10 @@ Both of these render out to the screen as an é:
 
 */
 
-let eAcute = "caf\u{E9}" // Note the String in the gutter -->
-let combinedAcute = "caf\u{65}\u{301}" // Note the String in the gutter -->
+let eAcute = "caf\u{E9}"
+let combinedAcute = "caf\u{65}\u{301}"
 
-eAcute == combinedAcute // Note: true -->
+eAcute == combinedAcute
 
 /*:
 

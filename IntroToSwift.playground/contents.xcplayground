@@ -7,10 +7,9 @@
         <page name='Collection Types'/>
         <page name='Values'/>
         <page name='Classes'/>
-        <page name='References'/>
         <page name='Optionals'/>
-        <page name='Initialization'/>
         <page name='Data Sources and Delegates'/>
         <page name='Views and View Controllers'/>
+        <page name='Networking'/>
     </pages>
 </playground>

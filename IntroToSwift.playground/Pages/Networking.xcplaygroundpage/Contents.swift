@@ -1,4 +1,4 @@
-//: [Previous](@previous)
+//: [Previous: Views and View Controllers](@previous)
 
 import Foundation
 

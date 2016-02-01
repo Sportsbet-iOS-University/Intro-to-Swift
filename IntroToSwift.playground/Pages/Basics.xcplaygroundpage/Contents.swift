@@ -227,7 +227,7 @@ add(1, 2)
 
 In the space below, write a function that meets these criteria:
 
-- Is named testFunction
+- Is named: `testFunction`
 - Has no parameters
 - Returns nothing
 
@@ -240,7 +240,7 @@ In the space below, write a function that meets these criteria:
 
 In the space below, write a function that meets these criteria:
 
-- Is named mySecondFunction
+- Is named: `mySecondFunction`
 - Has one parameter:
   - No external parameter name
   - Local parameter name: value
@@ -256,7 +256,7 @@ In the space below, write a function that meets these criteria:
 
 In the space below, write a function that meets these criteria:
 
-- Is named unlabeled
+- Is named: `unlabeled`
 - Has two parameters:
   - Parameter 1
     - No external parameter name
@@ -278,7 +278,7 @@ In the space below, write a function that meets these criteria:
 
 In the space below, write a function that meets these criteria:
 
-- Is named frobnicate
+- Is named: `frobnicate`
 - Has two parameters:
   - Parameter 1:
     - External parameter name: givenFoo

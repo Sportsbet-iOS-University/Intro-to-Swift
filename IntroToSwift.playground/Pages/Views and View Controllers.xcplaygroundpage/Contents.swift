@@ -1,7 +1,7 @@
-//: [Previous](@previous)
+//: [Previous: Data Sources and Delegates](@previous)
 
 import Foundation
 
 var str = "Hello, playground"
 
-//: [Next](@next)
+//: [Next: Networking](@next)

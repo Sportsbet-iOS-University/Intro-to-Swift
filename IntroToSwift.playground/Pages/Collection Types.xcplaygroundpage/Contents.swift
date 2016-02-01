@@ -293,6 +293,113 @@ moreMemes
 
 # Sets
 
+A set is conceptually similar to an array, except that all the values in a
+set must be unique (it does not allow duplicate values) and it does not store
+the values in any particular order. It also doesn't have a short hand way to
+create them or to specify its type, so you have to use the long form:
+
+*/
+
+let emptySet = Set<Int>()
+
+/*:
+
+This creates an empty Set. The `Set<Int>` is read aloud as "A set of Ints". If
+you were using an Array, you'd probably write `[Int]`, but you could also use
+the long-form way as with Set and write `Array<Int>`. You can create a set
+from an Array literal by specifying the type explicitly when declaring it:
+
+*/
+
+let theNumbers: Set<Int> = [4, 8, 15, 16, 23, 42]
+
+/*:
+
+Even though what's on the right-hand side of the `=` is *actually* an Array,
+Swift is smart enough to convert that implicitly to a `Set<Int>` since you
+told it that the type of `theNumbers` is a `Set<Int>`.
+
+*/
+
+/*:
+
+Sets are unordered:
+
+*/
+
+var theNumbersStr = ""
+for num in theNumbers {
+    theNumbersStr += "\(num) "
+}
+theNumbersStr
+
+/*:
+
+And they may not contain duplicates:
+
+*/
+
+var exampleSet = Set<Int>()
+exampleSet.insert(5)
+exampleSet.insert(5)
+
+/*:
+
+Sets have useful comparison operations, which let you find common items across
+multiple sets, or find just the items that aren't common across multiple sets:
+
+*/
+
+let oddDigits: Set = [1, 3, 5, 7, 9]
+let evenDigits: Set = [0, 2, 4, 6, 8]
+let singleDigitPrimeNumbers: Set = [2, 3, 5, 7]
+
+oddDigits.union(evenDigits).sort()
+
+oddDigits.intersect(evenDigits).sort()
+
+oddDigits.subtract(singleDigitPrimeNumbers).sort()
+
+oddDigits.exclusiveOr(singleDigitPrimeNumbers).sort()
+
+/*:
+
+Note that we use `.sort()` at the end to convert the Set (which doesn't have an
+order) into an Array (which does have an order) where the ordering is
+determined by the fact that numbers have an implicit and well-known ordering.
+
+*/
+
+/*:
+
+Some more comparison operations:
+
+- Use the `isSubsetOf` method to determine whether all of the values of a set
+are contained in the specified set.
+- Use the `isSupersetOf` method to determine whether a set contains all of
+the values in a specified set.
+- Use the `isStrictSubsetOf` or `isStrictSupersetOf` methods to determine
+whether a set is a subset or superset, but not equal to, a specified set.
+- Use the `isDisjointWith` method to determine whether two sets have any
+values in common.
+
+*/
+
+let houseAnimals: Set = ["🐶", "🐱"]
+let farmAnimals: Set = ["🐮", "🐔", "🐑", "🐶", "🐱"]
+let cityAnimals: Set = ["🐦", "🐭"]
+
+houseAnimals.isSubsetOf(farmAnimals)
+
+farmAnimals.isSupersetOf(houseAnimals)
+
+farmAnimals.isDisjointWith(cityAnimals)
+
+/*:
+
+Try it yourself! Use the space below to try making your own collections and
+doing comparisons to get a feel for how they work.
+
 */
 
 

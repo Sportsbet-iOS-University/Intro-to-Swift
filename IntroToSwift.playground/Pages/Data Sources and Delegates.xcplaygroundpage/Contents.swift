@@ -1,7 +1,7 @@
-//: [Previous](@previous)
+//: [Previous: Optionals](@previous)
 
 import Foundation
 
 var str = "Hello, playground"
 
-//: [Next](@next)
+//: [Next: Views and View Controllers](@next)

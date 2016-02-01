@@ -1,7 +1,35 @@
-//: [Previous](@previous)
+//: [Previous: Values](@previous)
 
 import Foundation
 
-var str = "Hello, playground"
+/*:
 
-//: [Next](@next)
+# Classes
+
+*/
+
+/*:
+
+# References
+
+*/
+
+/*:
+
+# Inheritance
+
+*/
+
+/*:
+
+# Extensions
+
+*/
+
+/*:
+
+# References
+
+*/
+
+//: [Next: Optionals](@next)

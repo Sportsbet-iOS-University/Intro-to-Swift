@@ -1,7 +1,29 @@
-//: [Previous](@previous)
+//: [Previous: Classes](@previous)
 
 import Foundation
 
-var str = "Hello, playground"
+/*:
 
-//: [Next](@next)
+# Optionality
+
+*/
+
+/*:
+
+# Implicitly Unwrapped Optionals
+
+*/
+
+/*:
+
+# Optional Chaining
+
+*/
+
+/*:
+
+# Mass Unwrapping, Guards
+
+*/
+
+//: [Next: Data Sources and Delegates](@next)
