@@ -381,12 +381,150 @@ For an extra challenge, now try iterating through that array and printing out
 a description of each of the items in the backyard.
 
 */
+// Write your code here
+
 
 /*:
 
 # Protocols
 
+A protocol defines a blueprint of functions, variables, and other requirements
+that suit a particular task or piece of functionality. The protocol can then be
+adopted by a class, structure, or enumeration to provide an actual 
+implementation of those requirements. Any type that satisfies the
+requirements of a protocol is said to conform to that protocol.
+
+For example, we could assert that anything that "quacks" is a Duck:
 
 */
+
+protocol Duck {
+    func quack()
+}
+
+/*:
+
+We've created a protocol called `Duck`. This allows us to specify that one of
+our structs, enums or classes *conforms* to the `Duck` protocol. If we do that,
+we *promise* that we'll provide an implementation of the `quack()` function,
+since that is what the protocol requires.
+
+Truthfully, we should probably call something like this "Quackable", since it
+just says that anything that conforms to it can quack, but in this universe,
+let's just say that anything that's quacks like a duck *is* a duck!
+
+We could create a `Mallard` struct now which conforms to the `Duck` protocol:
+
+*/
+
+struct Mallard: Duck {
+    func quack() {
+        print("Quack!")
+    }
+}
+
+/*:
+
+Try removing the `quack()` function and seeing what error comes up. Because we
+added the `: Duck` part in the declaration, that tells Swift that our
+`Mallard` struct *conforms* to the `Duck` protocol, which means we promise that
+we'll provide an implementation of the `quack()` function.
+
+Protocols can also require conformers to provide variables, as well as
+functions:
+
+*/
+
+protocol Named {
+    var name: String { get }
+    
+    func sayName()
+}
+
+/*:
+
+There are complex reasons why protocols require this syntax to specify
+variables, for now just remember that if you want a protocol to require
+conformers to provide a read-only variable, you use:
+
+    var variable: Type { get }
+
+For write-only:
+
+    var variable: Type { set }
+
+For read and write:
+
+    var variable: Type { get set }
+
+Structs, enums and classes can conform to more than one protocol at a time,
+and therefore promise to implement *all* of its protocols' variables and
+functions:
+
+*/
+
+struct Swan: Duck, Named {
+    let name: String
+    
+    func quack() {
+        print("Hooonk")
+    }
+    
+    func sayName() {
+        // You really expect a Swan to talk?
+        quack()
+    }
+}
+
+/*:
+
+Protocols are useful because it provides the ability for libraries and third-
+party code to interact with code you write. Say we wanted to work with a
+library written by someone you've never seen or talked to before. They could
+provide a protocol like `Named`, and in their functions they'd specify that
+what they're looking for is something that conforms to that `Named` protocol:
+
+*/
+
+// Imagine this function was defined in some code you didn't write
+func gimmeANamed(namedThing: Named) {
+    namedThing.sayName()
+}
+
+// You'd still be able to use it with your struct
+let swan = Swan(name: "John the Swan")
+gimmeANamed(swan)
+
+/*:
+
+Because `Swan` conforms to `Named`, you can pass instances of it to anything
+expecting a `Named`, or `Duck`. It's extremely important to get this right,
+since this functionality is used *extensively* in the iOS and OS X frameworks.
+
+*/
+
+/*:
+
+# Protocols Exercise
+
+In a super-secret location, I've written the following protocol:
+
+    protocol NSASpyable {
+        var personalInformation: String { get }
+
+        func sendInfoToNSA()
+    }
+
+Write a struct that conforms to this protocol. Then, create several instances
+of your struct in an Array. You can then pass this array into a function I've
+written also in a super-secret place. You can invoke this function like this:
+
+    beginPRISMProgram(myArray)
+
+*/
+
+// Write your code here
+
+
 
 //: [Next: Classes](@next)
