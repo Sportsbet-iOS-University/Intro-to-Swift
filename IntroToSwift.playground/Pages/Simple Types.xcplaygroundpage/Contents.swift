@@ -86,7 +86,7 @@ func giveMeDubs(number: Double) {
 }
 
 //giveMeDubs(num)
-//^ Cannot convert value of type 'Int' to expected argument type 'Float'
+//^ Cannot convert value of type 'Int' to expected argument type 'Double'
 
 /*:
 
