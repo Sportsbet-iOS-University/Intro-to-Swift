@@ -3,7 +3,7 @@ import Foundation
 public class ForceUser {
     public var hitPoints = 0
     public var name = "Unnamed"
-    public var chosenLightsaberColor: LightsaberColor = .Blue
+    public var chosenLightsaberColor: LightsaberColor = .SpaceGray
     
     public init() {
         
@@ -14,7 +14,7 @@ public class ForceUser {
     }
     
     public enum LightsaberColor: String {
-        case Blue, Green, Purple, Red
+        case Blue, Green, Purple, Red, SpaceGray
     }
     
     public func side() -> Side {
@@ -39,24 +39,39 @@ public func simulate(users: [ForceUser]) -> [String] {
         .Blue, .Green, .Purple
     ]
     
-    results.append(expect(darthvader.chosenLightsaberColor == .Red))
-    results.append(expect(darthmaul.chosenLightsaberColor == .Red))
-    results.append(expect(jediCols.contains(luke.chosenLightsaberColor)))
-    results.append(expect(jediCols.contains(obiwan.chosenLightsaberColor)))
+    results.append(expect(darthvader.chosenLightsaberColor == .Red,
+        message: "Darth Vader's lightsaber is red?"))
+    results.append(expect(darthmaul.chosenLightsaberColor == .Red,
+        message: "Darth Maul's lightsaber is red?"))
+    results.append(expect(jediCols.contains(luke.chosenLightsaberColor),
+        message: "Luke's lightsaber is blue|green|purple?"))
+    results.append(expect(jediCols.contains(obiwan.chosenLightsaberColor),
+        message: "Obi-wan's lightsaber is blue|green|purple?"))
     
-    results.append(expect(luke.fight(obiwan) == "Fight refused."))
+    results.append(expect(luke.fight(obiwan) == "Fight refused.",
+        message: "Luke refuses to fight Obi-wan"))
     results.append(expect(darthvader.fight(darthmaul) == "Darth Vader " +
-        "Darth Maul with Red lightsaber! Darth Vader wins!"))
-    results.append(expect(darthmaul.hitPoints <= 0))
-    results.append(expect(darthvader.hitPoints == 14))
-    results.append(expect(obiwan.fight(darthvader) == "Obi-Wan Kenobi fights" + "Darth Vader with " + obiwan.chosenLightsaberColor.rawValue +
-        " lightsaber! Darth Vader wins!"))
-    results.append(expect(obiwan.hitPoints <= 0))
-    results.append(expect(darthvader.hitPoints == 6))
+        "fights Darth Maul with Red lightsaber! Darth Vader wins!",
+        message: "Darth Vader beats Darth Maul?"))
+    results.append(expect(darthmaul.hitPoints <= 0,
+        message: "Darth Maul is dead?"))
+    results.append(expect(darthvader.hitPoints == 14,
+        message: "Darth Vader recovered HP?"))
+    results.append(expect(obiwan.fight(darthvader) == "Obi-Wan Kenobi fights " + "Darth Vader with " + obiwan.chosenLightsaberColor.rawValue +
+        " lightsaber! Darth Vader wins!",
+        message: "Darth Vader beats Obi-Wan?"))
+    results.append(expect(obiwan.hitPoints <= 0,
+        message: "Obi-wan is dead?"))
+    results.append(expect(darthvader.hitPoints == 6,
+        message: "Darth Vader lost HP?"))
     results.append(expect(luke.fight(darthvader) == "Luke Skywalker fights " + "Darth Vader with " + luke.chosenLightsaberColor.rawValue +
-        " lightsaber! Luke Skywalker wins!"))
-    results.append(expect(darthvader.hitPoints <= 0))
-    results.append(expect(luke.hitPoints == 4))
-    expect(luke.fight(darthvader) == "Nothing happens.")
+        " lightsaber! Luke Skywalker wins!",
+        message: "Luke beats Darth Vader?"))
+    results.append(expect(darthvader.hitPoints <= 0,
+        message: "Darth Vader is dead?"))
+    results.append(expect(luke.hitPoints == 4,
+        message: "Luke lost HP?"))
+    expect(luke.fight(darthvader) == "Nothing happens.",
+        message: "Can't fight the dead?")
     return results
 }

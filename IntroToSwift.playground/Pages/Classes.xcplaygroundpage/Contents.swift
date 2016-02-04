@@ -319,9 +319,11 @@ Modify the following classes so that these requirements are met:
 *lower* hitpoints wins.
   - Sith will recover hitpoints equal to *half* the hitpoints of the defeated
     enemy at the beginning of the fight.
+  - If hitpoints are *equal*, "self" wins.
 - Light Side vs Dark Side will fight. The one with the *higher* hitpoints wins.
   - Victor will lose hitpoints equal to the hitpoints of the defeated enemy at
     the beginning of the fight.
+  - If hitpoints are *equal*, "self" wins.
 - Someone with 0 or less hitpoints is "dead" and fighting them does nothing.
 In this case `fight()` should return "Nothing happens.".
 - In the case where a fight happens, the output text should be like:
@@ -342,6 +344,10 @@ match EXACTLY the case, number of spaces, full stop at end, etc.
 */
 
 class Jedi: ForceUser {
+    override init() {
+        super.init()
+    }
+    
     override func side() -> ForceUser.Side {
         return super.side()
     }
@@ -356,6 +362,10 @@ class Jedi: ForceUser {
 }
 
 class Sith: ForceUser {
+    override init() {
+        super.init()
+    }
+    
     override func side() -> ForceUser.Side {
         return super.side()
     }
@@ -384,7 +394,7 @@ obiwan.name = "Obi-Wan Kenobi"
 darthvader.name = "Darth Vader"
 darthmaul.name = "Darth Maul"
 
-// When everything in the below array is "Good work!", you've solved it!
+// When everything in the below array is 👍, you've solved it!
 simulate([luke, obiwan, darthvader, darthmaul])
 
 /*:

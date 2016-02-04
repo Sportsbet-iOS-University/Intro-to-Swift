@@ -1,9 +1,9 @@
 import Foundation
 
-public func expect(assertion: Bool) -> String {
+public func expect(assertion: Bool, message: String) -> String {
     if assertion {
-        return "Good work!"
+        return "\(message) 👍"
     } else {
-        return "Still not right!"
+        return "\(message) 👎"
     }
 }
