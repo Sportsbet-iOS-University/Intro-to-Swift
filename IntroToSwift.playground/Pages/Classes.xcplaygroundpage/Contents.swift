@@ -182,7 +182,210 @@ a definite list of possible states.
 
 # Inheritance
 
+Classes can also be *extended* to provide, or override functionality from their
+parent. For example:
+
 */
+
+class Vehicle {
+    var currentSpeed = 0.0
+    
+    func status() -> String {
+        return "traveling at \(currentSpeed) metres per second"
+    }
+    
+    func noise() -> String {
+        // "Vehicle" isn't specific enough to know what kind of noise
+        // is made...
+        return "*crickets*"
+    }
+}
+
+/*:
+
+Since `Vehicle` doesn't inherit (aka extend) from any other class, it is what's
+known as a *base* class. Let's create a subclass of it:
+
+*/
+
+class Bicycle: Vehicle {
+    var hasBasket = false
+}
+
+/*:
+
+This should look familiar to you if you've read the section on Protocols. You
+subclass using the same syntax as conforming to a protocol, except that a class
+can only inherit from *one* superclass, but it can conform to any number of
+protocols.
+
+This new `Bicycle` class automatically gains all of the characteristics of
+`Vehicle`, such as its `currentSpeed` variable, and its `status()` and
+`noise()` methods. In addition, it adds a new variable, `hasBasket`, which
+defaults to `false`.
+
+*/
+
+let bike = Bicycle()
+bike.hasBasket = true
+bike.currentSpeed = 2.4
+bike.status()
+
+/*:
+
+Subclasses can themselves be subclassed:
+
+*/
+
+class Tandem: Bicycle {
+    var currentNumberOfPassengers = 0
+}
+
+/*:
+
+`Tandem` inherits all of the properties and methods from `Bicycle`, which in
+turn inherits all of the properties and methods from `Vehicle`. The Tandem
+subclass also adds a new variable called `currentNumberOfPassengers`,
+with a default value of `0`.
+
+If you create an instance of `Tandem`, you can work with any of its new and
+inherited properties, and query the `status()` function it inherits from
+`Vehicle`:
+
+*/
+
+let tandem = Tandem()
+tandem.hasBasket = true
+tandem.currentNumberOfPassengers = 2
+tandem.currentSpeed = 3.1
+tandem.status()
+
+/*:
+
+A subclass can also override a function from its parents:
+
+*/
+
+class Train: Vehicle {
+    override func noise() -> String {
+        return "choo choo!"
+    }
+}
+
+let genericVehicle = Vehicle()
+genericVehicle.noise()
+
+let train = Train()
+train.currentSpeed = 39.34
+train.noise()
+
+/*:
+
+This is useful: say we had a function that only understood `Vehicle`s, we could
+still pass it our subclass `Train` and have it understand:
+
+*/
+
+func observeVehicle(vehicle: Vehicle) -> String {
+    return "Vehicle drove through at \(vehicle.currentSpeed)m/s, " +
+        "making noise '\(vehicle.noise())'"
+}
+
+observeVehicle(tandem)
+observeVehicle(train)
+
+/*:
+
+And it lets us put disparate types into a collection, since they all derive
+from the same parent:
+
+*/
+
+let vehicles: [Vehicle] = [
+    Train(),
+    Tandem(),
+    Bicycle()
+]
+
+/*:
+
+# Classes Exercise
+
+Modify the following classes so that these requirements are met:
+
+- Jedi will *only* fight dark-side force users. It should return 
+"Fight refused." if enemy is light-side, and hitpoints will not change.
+- Sith will fight anything. If fighting a dark-side user, the one with the
+*lower* hitpoints wins.
+  - Sith will recover hitpoints equal to *half* the hitpoints of the defeated
+    enemy at the beginning of the fight.
+- Light Side vs Dark Side will fight. The one with the *higher* hitpoints wins.
+  - Victor will lose hitpoints equal to the hitpoints of the defeated enemy at
+    the beginning of the fight.
+- Someone with 0 or less hitpoints is "dead" and fighting them does nothing.
+In this case `fight()` should return "Nothing happens.".
+- In the case where a fight happens, the output text should be like:
+  <name> fights <enemy> with <colour> lightsaber! <winner> wins!
+- Jedi can have blue, green, or purple lightsabers. Which colour they get is
+  totally random, but once a colour is picked for an instance, it shouldn't
+  change again! Sith always have red lightsabers.
+- Jedi are always Light Side.
+- Sith are always Dark Side.
+
+Hint: You can ⌘+click the ForceUser text to see the definition of
+`ForceUser`, which will show you what you can override and what variables
+are available on a class.
+
+Hint: The checker is ***extremely*** pedantic. Make sure your fight strings
+match EXACTLY the case, number of spaces, full stop at end, etc.
+
+*/
+
+class Jedi: ForceUser {
+    override func side() -> ForceUser.Side {
+        return super.side()
+    }
+    
+    override func lightsaberColours() -> [ForceUser.LightsaberColor] {
+        return super.lightsaberColours()
+    }
+    
+    override func fight(other: ForceUser) -> String {
+        return super.fight(other)
+    }
+}
+
+class Sith: ForceUser {
+    override func side() -> ForceUser.Side {
+        return super.side()
+    }
+    
+    override func lightsaberColours() -> [ForceUser.LightsaberColor] {
+        return super.lightsaberColours()
+    }
+    
+    override func fight(other: ForceUser) -> String {
+        return super.fight(other)
+    }
+}
+
+// Do not modify below, and yes, I know this is Star Wars sacrilege
+
+let luke = Jedi()
+let obiwan = Jedi()
+let darthvader = Sith()
+let darthmaul = Sith()
+luke.hitPoints = 10
+obiwan.hitPoints = 8
+darthvader.hitPoints = 9
+darthmaul.hitPoints = 10
+luke.name = "Luke Skywalker"
+obiwan.name = "Obi-Wan Kenobi"
+darthvader.name = "Darth Vader"
+darthmaul.name = "Darth Maul"
+
+// When everything in the below array is "Good work!", you've solved it!
+simulate([luke, obiwan, darthvader, darthmaul])
 
 /*:
 

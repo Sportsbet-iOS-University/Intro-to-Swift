@@ -26,4 +26,10 @@ import Foundation
 
 */
 
+/*:
+
+# Error Handling
+
+*/
+
 //: [Next: Data Sources and Delegates](@next)
