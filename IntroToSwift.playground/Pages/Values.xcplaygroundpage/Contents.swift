@@ -145,11 +145,11 @@ struct Rectangle {
 
 /*:
 
-This is actually *not required* though, you can also simply type `return length
-* width` and Swift is smart enough to know you mean `self.length` and
-`self.width` for you. Try it yourself, remove the `self.` and watch. Sometimes
-it's helpful to explicit by including the `self.` but most of the time you can
-omit it.
+This is actually *not required* though, you can also simply type 
+`return length * width` and Swift is smart enough to know you mean 
+`self.length` and `self.width` for you. Try it yourself, remove the `self.` 
+and watch. Sometimes it's helpful to explicit by including the `self.` but 
+most of the time you can omit it.
 
 */
 
