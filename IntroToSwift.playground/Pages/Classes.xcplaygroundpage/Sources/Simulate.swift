@@ -21,7 +21,7 @@ public class ForceUser {
         return .Light
     }
     
-    public func lightsaberColours() -> [LightsaberColor] {
+    public func possibleLightsaberColours() -> [LightsaberColor] {
         return []
     }
     

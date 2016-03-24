@@ -340,6 +340,10 @@ are available on a class.
 
 Hint: The checker is ***extremely*** pedantic. Make sure your fight strings
 match EXACTLY the case, number of spaces, full stop at end, etc.
+ 
+Hint: It's not enough to just change the `possible` lightsaber colours, the
+Jedi or Sith needs to actually be *given* a lightsaber colour by setting the
+`chosenLightsaberColor` variable, which is declared in `ForceUser`.
 
 */
 
@@ -352,8 +356,8 @@ class Jedi: ForceUser {
         return super.side()
     }
     
-    override func lightsaberColours() -> [ForceUser.LightsaberColor] {
-        return super.lightsaberColours()
+    override func possibleLightsaberColours() -> [ForceUser.LightsaberColor] {
+        return super.possibleLightsaberColours()
     }
     
     override func fight(other: ForceUser) -> String {
@@ -370,8 +374,8 @@ class Sith: ForceUser {
         return super.side()
     }
     
-    override func lightsaberColours() -> [ForceUser.LightsaberColor] {
-        return super.lightsaberColours()
+    override func possibleLightsaberColours() -> [ForceUser.LightsaberColor] {
+        return super.possibleLightsaberColours()
     }
     
     override func fight(other: ForceUser) -> String {
